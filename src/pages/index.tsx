@@ -1,12 +1,12 @@
 import type { NextPage } from 'next';
-import Home from './Home';
-import Pagination from './Pagination';
+import Navbar from './navbar';
+import Tamagotchi from './tamagotchi';
 
 const Index: NextPage = () => {
   return (
     <>
-      <Home />
-      <Pagination />
+      <Tamagotchi />
+      <Navbar />
     </>
   );
 };

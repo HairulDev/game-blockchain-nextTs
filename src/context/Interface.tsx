@@ -2,31 +2,38 @@ export interface Planet {
   name: string;
   rotation_period: string;
   orbital_period: string;
-  diameter: string;
-  climate: string;
-  gravity: string;
-  terrain: string;
-  surface_water: string;
-  population: string;
-  created: string;
-  url: string;
 }
 
 export interface PlanetResult {
-  count: number;
-  next: string | null;
-  previous: string | null;
-  results: Planet[];
+  addressTo: string | null;
+  amount: string | null;
+  keyword: string | null;
+  message: string | null;
+  tokenId: string | null;
+  // results: Planet[];
 }
 
 export interface ContextProps {
-  planets: PlanetResult;
-  currentPage: number;
-  handleClick: (currentPage: number) => void;
+  connectWallet: () => void;
+  currentAccount: string;
+  disconnectWallet: () => void;
+  statusTamagotchi: [];
+  happiness: number;
+  hunger: number;
+  lastFed: number;
+  dropFood: () => void;
+  feed: () => void;
+  play: () => void;
+  mint: () => void;
+  deletePet: () => void;
+  makePetHungry: () => void;
+  error: [];
+  isFoodDropping: boolean;
+  tokenPet: string;
+  getPet: () => void;
+  formData: PlanetResult;
+  handleChange: (e: any, name: string) => void;
+  sendTransaction: () => void;
+  balance: string;
   isLoading: boolean;
-  handleDetailPlanet: (url: string) => void;
-  detailPlanet: Planet | null;
-  closeModal: () => void;
-  isModalOpen: boolean;
-  convertDateTime: (dateString: string) => string;
 }
