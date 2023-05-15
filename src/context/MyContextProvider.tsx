@@ -1,6 +1,7 @@
 import React, { createContext, FC, useEffect, useState } from 'react';
 import { ethers } from 'ethers';
 import BigInt from 'big-integer';
+import { BigNumber } from 'bignumber.js';
 import { contractABITamagotchi, contractAddressTamagotchi } from '../utils/constants';
 import { Planet, PlanetResult, ContextProps } from './Interface';
 
@@ -58,7 +59,7 @@ interface TamagotchiContract {
   getStatus: () => void;
   addToBlockchain: (
     addressTo: string,
-    parsedAmount: Number,
+    parsedAmount: BigNumber,
     message: string,
     keyword: string,
     uint256Num: string,
@@ -79,7 +80,7 @@ const defaultContextTamagotchiContract: TamagotchiContract = {
   getStatus: () => {},
   addToBlockchain: (
     addressTo: string,
-    parsedAmount: Number,
+    parsedAmount: BigNumber,
     message: string,
     keyword: string,
     uint256Num: string,
@@ -328,8 +329,6 @@ const MyContextProvider: FC = ({ children }) => {
         const { addressTo, amount, keyword, message, tokenId }: any = formData;
 
         const parsedAmount: any = ethers.utils.parseEther(amount);
-        console.log('parsedAmount', parsedAmount);
-        return;
         await ethereum.request({
           method: 'eth_sendTransaction',
           params: [
